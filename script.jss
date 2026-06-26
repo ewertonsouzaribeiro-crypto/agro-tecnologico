@@ -1,1 +1,284 @@
 
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AgroTech - O Futuro do Campo</title>
+    <style>
+        /* ==========================================
+           1. CONFIGURAÇÕES GERAIS E VARIÁVEIS
+           ========================================== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        :root {
+            --cor-primaria: #1e4620;      /* Verde escuro institucional */
+            --cor-secundaria: #2e7d32;    /* Verde folha para botões */
+            --cor-acento: #85e085;        /* Verde claro para destaques */
+            --cor-fundo: #f4f7f5;         /* Fundo cinza levemente esverdeado */
+            --cor-texto-escuro: #2c3e50;  /* Texto principal */
+            --cor-texto-claro: #ffffff;   /* Texto em fundos escuros */
+        }
+
+        body {
+            background-color: var(--cor-fundo);
+            color: var(--cor-texto-escuro);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* ==========================================
+           2. CABEÇALHO E NAVEGAÇÃO
+           ========================================== */
+        header {
+            background-color: var(--cor-primaria);
+            color: var(--cor-texto-claro);
+            padding: 1.2rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        header .logo {
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: var(--cor-acento);
+            letter-spacing: 0.5px;
+        }
+
+        header nav a {
+            color: var(--cor-texto-claro);
+            text-decoration: none;
+            margin-left: 24px;
+            font-weight: 500;
+            font-size: 1rem;
+            transition: color 0.3s ease;
+        }
+
+        header nav a:hover {
+            color: var(--cor-acento);
+        }
+
+        /* ==========================================
+           3. BANNER PRINCIPAL (HERO SECTION)
+           ========================================== */
+        .hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0.55)), 
+                        url('https://images.unsplash.com/photo-1560493676-04071c5f467b?auto=format&fit=crop&w=1200&q=80') no-repeat center center/cover;
+            height: 65vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: var(--cor-texto-claro);
+            text-align: center;
+            padding: 0 20px;
+        }
+
+        .hero h1 {
+            font-size: 3.2rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+            letter-spacing: -0.5px;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            margin-bottom: 30px;
+            max-width: 650px;
+            font-weight: 300;
+        }
+
+        .btn {
+            background-color: var(--cor-secundaria);
+            color: var(--cor-texto-claro);
+            padding: 12px 30px;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15);
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        .btn:hover {
+            background-color: #1b5e20;
+            transform: translateY(-2px);
+        }
+
+        /* ==========================================
+           4. SEÇÃO DE RECURSOS (CARDS)
+           ========================================== */
+        .features {
+            max-width: 1200px;
+            margin: 60px auto;
+            padding: 0 20px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 35px;
+        }
+
+        .card {
+            background: #ffffff;
+            padding: 40px 30px;
+            border-radius: 12px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.04);
+            text-align: center;
+            border-top: 5px solid var(--cor-secundaria);
+            /* Configuração inicial para a animação do JS */
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        .card h3 {
+            margin-bottom: 15px;
+            color: var(--cor-primaria);
+            font-size: 1.4rem;
+            font-weight: 600;
+        }
+
+        .card p {
+            color: #666;
+            font-size: 1rem;
+            line-height: 1.7;
+        }
+
+        /* ==========================================
+           5. RODAPÉ
+           ========================================== */
+        footer {
+            background-color: #112211;
+            color: #999;
+            text-align: center;
+            padding: 30px 20px;
+            margin-top: 60px;
+            font-size: 0.95rem;
+            border-top: 1px solid #223322;
+        }
+
+        /* ==========================================
+           6. RESPONSIVIDADE
+           ========================================== */
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                gap: 15px;
+                padding: 1.5rem;
+            }
+
+            header nav a {
+                margin: 0 10px;
+            }
+
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+
+            .hero p {
+                font-size: 1.05rem;
+            }
+
+            .features {
+                margin: 30px auto;
+                gap: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo">🌾 AgroTecnologia</div>
+        <nav>
+            <a href="#inicio">Início</a>
+            <a href="#solucoes">Soluções</a>
+            <a href="#contato">Contato</a>
+        </nav>
+    </header>
+
+    <section class="hero" id="inicio">
+        <h1>Inovação que brota da terra</h1>
+        <p>Conectando tecnologia de ponta, inteligência artificial e automação para maximizar a produtividade da sua lavoura.</p>
+        <a href="#solucoes" class="btn">Conhecer Soluções</a>
+    </section>
+
+    <main class="features" id="solucoes">
+        <div class="card">
+            <h3>Drones de Monitoramento</h3>
+            <p>Mapeamento térmico e análise de saúde da plantação em tempo real, identificando pragas antes que elas se espalhem.</p>
+        </div>
+
+        <div class="card">
+            <h3>Sensores IoT</h3>
+            <p>Monitore a umidade do solo, temperatura e nutrientes direto do seu smartphone para uma irrigação precisa.</p>
+        </div>
+
+        <div class="card">
+            <h3>Análise de Dados (IA)</h3>
+            <p>Previsões climáticas assertivas e relatórios inteligentes para garantir a melhor época de plantio e colheita.</p>
+        </div>
+    </main>
+
+    <footer id="contato">
+        <p>&copy; 2026 AgroTecnologia - Cultivando o futuro digital. Todos os direitos reservados.</p>
+    </footer>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            
+            // 1. Navegação suave para os links do menu
+            const links = document.querySelectorAll("header nav a, .btn");
+            
+            links.forEach(link => {
+                link.addEventListener("click", (e) => {
+                    const targetId = link.getAttribute("href");
+                    
+                    if (targetId.startsWith("#")) {
+                        e.preventDefault();
+                        const targetSection = document.querySelector(targetId);
+                        
+                        if (targetSection) {
+                            targetSection.scrollIntoView({
+                                behavior: "smooth",
+                                block: "start"
+                            });
+                        }
+                    }
+                });
+            });
+
+            // 2. Efeito de surgimento (Fade-in) ao rolar a página
+            const cards = document.querySelectorAll(".card");
+            
+            const fecharCards = () => {
+                cards.forEach(card => {
+                    const cardTop = card.getBoundingClientRect().top;
+                    const windowHeight = window.innerHeight;
+                    
+                    if (cardTop < windowHeight - 50) {
+                        card.style.opacity = "1";
+                        card.style.transform = "translateY(0)";
+                        card.style.transition = "all 0.6s ease-out";
+                    }
+                });
+            };
+
+            // Executa a função ao rolar a página e uma vez ao carregar
+            window.addEventListener("scroll", fecharCards);
+            fecharCards();
+        });
+    </script>
+</body>
+</html>
